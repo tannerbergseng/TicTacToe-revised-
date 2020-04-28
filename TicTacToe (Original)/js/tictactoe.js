@@ -5,7 +5,18 @@ function watch() {
 	var btn = document.getElementById('btnStop');
 	btnDisabled(btn);  // disable the stop button since the game has not started
 }
+<<<<<<< Updated upstream
 
+=======
+var arrayO = document.getElementsByClassName("O");
+			var arrayX = document.getElementsByClassName("X");
+			for (var i=0; i<arrayO.length;i++) {
+				arrayO[i].style.transform = "translateY(-100%)"; // this initializes all avatar graphics to not be visible as translateY(0%) would make them appear
+			}
+			for (var i=0; i<arrayX.length;i++) {
+				arrayX[i].style.transform = "translateY(100%)";
+			}
+>>>>>>> Stashed changes
 // this function will roll for random number twice, one for
 // each player and determine which player won the roll.
 function rollForTurn() {
