@@ -7,44 +7,7 @@
         <link rel="stylesheet" href="./css/game.css">
 	</head>
 	<body id="body">
-        <!-- Audio clips -->
-		<audio id="placeAvatar">
-			<source src="./audio/PlaceAvatar.mp3" type="audio/mpeg">
-			Your browser does not support the audio element.
-		</audio>
-		<audio id="winGame">
-			<source src="./audio/Winning.mp3" type="audio/mpeg">
-			Your browser does not support the audio element.
-		</audio>
-		<audio id="tieGame">
-			<source src="./audio/TieGame.mp3" type="audio/mpeg">
-			Your browser does not support the audio element.
-		</audio>
-		<audio id="diceRoll">
-			<source src="./audio/DiceRoll.mp3" type="audio/mpeg">
-			Your browser does not support the audio element.
-        </audio>
-        <!-- END of Audio clips -->
-
-		<div id="shell"><!--This div encapluslates the entire playing field-->
-			<div id="gameMsgBox" onclick="hideGameMsg()"><p id="gameMsg"></p></div> <!--brings up the message box when the start game button is hit -->
-            <!-- Shows the current player configuration along with the game status -->
-            <div class="console_Left"> 
-				<div class="displayBox boxLeft">
-					<Strong>Current Config:</strong><br><br>
-					<label>Player 1: &nbsp&nbsp<span id="p1Display">O</span></label><br>
-					<label>Player 2: &nbsp&nbsp<span id="p2Display">X</span></label>
-				</div>
-				<button id="btnStart" onclick="startGame()">Start Game</button> <!--starts the game-->
-				<div id="boardState"></div>
-				<div id="controls">
-					<div id="messageFrame"><!--shows active player-->
-						<p id="showHeader">ACTIVE PLAYER:</p>
-						<p id="showPlayer">Game Stopped</p>
-					</div>
-				</div>
-            </div>
-            <!--End of player config-->
+       
 			<!-- Canvas for the user to select where to place the avatar -->
 			<div class="center-wrapper-parent">
 				<div class="canvas-wrapper">
@@ -53,24 +16,6 @@
 			  </div>
             <!-- End of canvas -->
             
-            <!-- Displays the configuration settings and allows the user to change which avatar they want to be -->
-			<div class="console_Right" style="float:right;">
-				<div class="displayBox boxRight">
-					<Strong>Configuration:</strong><br><br>
-					<label>Player 1: </label><select id="player1">
-                        <option value="X">X</option><!--Provides dropdown menu for avatar for player 1-->
-                        <option value="O">O</option>
-                    </select><br>
-					<label>Player 2: </label><select id="player2">
-                        <option value="X">X</option><!--Provides dropdown menu for avatar for player 1-->
-                        <option value="O">O</option>
-                    </select>
-					<button onclick="saveSettings()">Save Config</button><!--this funtion saves the player configuration-->
-				</div>
-				<div id="controls">
-					<button id="btnStop" onclick="stopGame()">Stop Game</button><!--Stops the game-->
-				</div>
-			</div>
 		</div>
 		
 		<script src="./js/tictactoe.js"></script>

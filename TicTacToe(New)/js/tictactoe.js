@@ -1,6 +1,7 @@
-'use strict';
 
-var player = 1;
+let player = 1
+let plaer2 = 2
+
 var lineColor = "#ddd";
 
 var canvas = document.getElementById('tic-tac-toe-board');
@@ -63,35 +64,37 @@ function clearPlayingArea (xCordinate, yCordinate) {
     sectionSize
   ); 
 }
-function drawO (xCordinate, yCordinate) {
-  var halfSectionSize = (0.5 * sectionSize);
-  var centerX = xCordinate + halfSectionSize;
-  var centerY = yCordinate + halfSectionSize;
-  var radius = (sectionSize - 100) / 2;
-  var startAngle = 0 * Math.PI; 
-  var endAngle = 2 * Math.PI;
+if (player = 2){
+    function drawO (xCordinate, yCordinate) {
+        var halfSectionSize = (0.5 * sectionSize);
+        var centerX = xCordinate + halfSectionSize;
+        var centerY = yCordinate + halfSectionSize;
+        var radius = (sectionSize - 100) / 2;
+        var startAngle = 0 * Math.PI; 
+        var endAngle = 2 * Math.PI;
 
-  context.lineWidth = 10;
-  context.strokeStyle = "#01bBC2";
-  context.beginPath();
-  context.arc(centerX, centerY, radius, startAngle, endAngle);
-  context.stroke();
-}
+        context.lineWidth = 10;
+        context.strokeStyle = "#01bBC2";
+        context.beginPath();
+        context.arc(centerX, centerY, radius, startAngle, endAngle);
+        context.stroke();
+    }}
 
-function drawX (xCordinate, yCordinate) {
-  context.strokeStyle = "#f1be32";
+if (player = 1){
+    function drawX (xCordinate, yCordinate) {
+    context.strokeStyle = "#f1be32";
 
-  context.beginPath();
-  
-  var offset = 50;
-  context.moveTo(xCordinate + offset, yCordinate + offset);
-  context.lineTo(xCordinate + sectionSize - offset, yCordinate + sectionSize - offset);
+    context.beginPath();
+    
+    var offset = 50;
+    context.moveTo(xCordinate + offset, yCordinate + offset);
+    context.lineTo(xCordinate + sectionSize - offset, yCordinate + sectionSize - offset);
 
-  context.moveTo(xCordinate + offset, yCordinate + sectionSize - offset);
-  context.lineTo(xCordinate + sectionSize - offset, yCordinate + offset);
+    context.moveTo(xCordinate + offset, yCordinate + sectionSize - offset);
+    context.lineTo(xCordinate + sectionSize - offset, yCordinate + offset);
 
-  context.stroke();
-}
+    context.stroke();
+    }}
 
 function drawLines (lineWidth, strokeStyle) {
   var lineStart = 4;
@@ -131,6 +134,7 @@ function getCanvasMousePosition (event) {
   }
 }
 
+
 canvas.addEventListener('mouseup', function (event) {
   if (player === 1) {
     player = 2;
@@ -142,3 +146,5 @@ canvas.addEventListener('mouseup', function (event) {
   addPlayingPiece(canvasMousePosition);
   drawLines(10, lineColor);
 });
+
+
