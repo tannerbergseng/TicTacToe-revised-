@@ -1,5 +1,14 @@
 var activePlayer = "Game Stopped";
 
+var arrayO = document.getElementsByClassName("O");
+var arrayX = document.getElementsByClassName("X");
+for (var i=0; i<arrayO.length; i++) {
+	arrayO[i].style.transform = "translateY(-100%)";
+}
+for (var i=0; i<arrayX.length; i++) {
+	arrayX[i].style.transform = "translateY(100%)";
+}
+
 // This function will get fired once the DOM is loaded.
 // Disable the stop button since it is not needed until game start.
 window.onload = function() {watch()};
@@ -162,19 +171,9 @@ function checkForWinCon() {
     info.sort(); // sort the square array in order despite the actual gameplay sequence
     for (var i in info) {
     	squareArray.push(info[i].charAt(0)); // new array with only squares not avatars
-    }
-    // call this following array of functions to check for any of the possible win cons
-	// checkWinCon1(info,squareArray);
-    // checkWinCon2(info,squareArray);
-    // checkWinCon3(info,squareArray);
-    // checkWinCon4(info,squareArray);
-    // checkWinCon5(info,squareArray);
-    // checkWinCon6(info,squareArray);
-    // checkWinCon7(info,squareArray);
-    // checkWinCon8(info,squareArray);
-	//console.log("New CHECK: "+document.getElementById('gameMsg').innerHTML);
+	}
+	WinCheck();
 	check4Tie();
-	betterWinCheck();
 }
 
 // call this function to check board state for any ties and act accordingly
@@ -303,7 +302,7 @@ function blink() {
 // -------------------------------------------------------------
 // These function are the algorithms to find all win conditions
 // -------------------------------------------------------------
-function betterWinCheck(){
+function WinCheck(){
 	var boardState = document.getElementById('boardState').innerHTML; 
 	function inc(var1, var2, var3){
 		var x = boardState.includes(var1)
@@ -330,8 +329,8 @@ function betterWinCheck(){
 	else if (inc('0O','3O','6O')) {winner('win',[0,3,6])}
 	else if (inc('1O','4O','7O')) {winner('win',[1,4,7])}
 	else if (inc('2O','5O','9O')) {winner('win',[2,5,8])}
-	else if (inc('0O','4O','8O')) {winner('win',[6,4,2])}
-	else if (inc('2O','4O','6O')) {winner('win',[0,4,8])}
+	else if (inc('6O','4O','2O')) {winner('win',[6,4,2])}
+	else if (inc('0O','4O','8O')) {winner('win',[0,4,8])}
 }
 //---------------------------------------------------------------------------------------
 // These block of functions are for each click event of their corresponding square element
