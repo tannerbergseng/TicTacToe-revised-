@@ -1,19 +1,15 @@
 body {
     margin-top: 50px;
-    background-color: #fff;
 }
 
 #shell {
-    width: 620px;
+    width: 608px;
     margin: 0 auto;
 }
 
 table {
-    width: 600px;
-    height: 600px;
-    margin: 0 auto;
+    width: 608;
     border-collapse: collapse;
-    border-spacing: 0px;
 }
 
 table tr:first-child td {
@@ -33,17 +29,15 @@ table tr td:last-child {
 }
 
 td {
-    height: 200px;
-    width: 200px;
     position: relative;
     cursor: pointer;
-    border: 5px solid black;
+    border: 4px solid rgba(252, 169, 3, .8);
+    padding: 0px;
 }
 
 .photo-container {
-    height: 200px;
-    width: 200px;
     text-align: center;
+    filter: contrast(3)
 }
 
 .avatar {
@@ -53,7 +47,6 @@ td {
 
 canvas{
     position: absolute;
-    margin: 0 auto;
     z-index: 10;
     pointer-events: none;
 }

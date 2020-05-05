@@ -6,15 +6,14 @@ function animateSquare(square) {
 		var paintAvatar = determineAvatar(); // get the correct avatar to paint for the active player
 		var selected = document.getElementById(square); // paint avatar
 		if (paintAvatar == "O") { // change these all to ternary satetments instead
-			animateO(selected); // call function to animate O
+			selected.style.backgroundImage = 'url("images/o.png")'
 		} else {
-			animateX(selected); // call function to animate X
+			selected.style.backgroundImage = 'url("images/x.png")'
 		}
-		// build new array adding the newly selected square and the assigned avatar
 		recordSquares.push(square + paintAvatar);
 		WinCheck();
 		avatarPlaced(); // end current turn and pass the turn to the other player
-		squareSound(); // play a game sound when the avatar is placed
+		sound("placeAvatar"); // play a game sound when the avatar is placed
 	}
 }
 
@@ -29,7 +28,7 @@ function check(recordSquares, square) {
 
 function determineAvatar() {
 	var paintAvatar;
-	if (activePlayer == "Player 1") { // check which player is active and their corresponding avatar
+	if (activePlayer == "Player 1") {
 		paintAvatar = "O";
 	} else {
 		paintAvatar = "X";
@@ -37,32 +36,24 @@ function determineAvatar() {
 	return paintAvatar; // returned back the correct avatar
 }
 
-function animateO(selected) {
-	selected.style.backgroundImage = 'url("images/avatarO.gif")'
-}
-
-function animateX(selected) {
-	selected.style.backgroundImage = 'url("images/avatarX.gif")'
-}
-
 function WinCheck() {
-	if (inc('0X', '1X', '2X')) { drawLine(50, 100, 550, 100) }
-	else if (inc('3X', '4X', '5X')) { drawLine(50, 300, 550, 300) }
-	else if (inc('6X', '7X', '8X')) { drawLine(50, 500, 550, 500) }
-	else if (inc('0X', '3X', '6X')) { drawLine(100, 50, 100, 550) }
-	else if (inc('1X', '4X', '7X')) { drawLine(300, 50, 300, 550) }
-	else if (inc('2X', '5X', '8X')) { drawLine(500, 50, 500, 550) }
-	else if (inc('6X', '4X', '2X')) { drawLine(550, 100, 100, 550) }
-	else if (inc('0X', '4X', '8X')) { drawLine(50, 100, 550, 500) }
+	if (inc('0X', '1X', '2X')) { drawLine(50, 100, 558, 100) }
+	else if (inc('3X', '4X', '5X')) { drawLine(50, 300, 558, 300) }
+	else if (inc('6X', '7X', '8X')) { drawLine(50, 500, 558, 500) }
+	else if (inc('0X', '3X', '6X')) { drawLine(100, 50, 100, 558) }
+	else if (inc('1X', '4X', '7X')) { drawLine(300, 50, 300, 558) }
+	else if (inc('2X', '5X', '8X')) { drawLine(500, 50, 500, 558) }
+	else if (inc('6X', '4X', '2X')) { drawLine(100, 508, 510, 90) }
+	else if (inc('0X', '4X', '8X')) { drawLine(100, 100, 520, 520) }
 
-	else if (inc('0O', '1O', '2O')) { drawLine(50, 100, 550, 100) }
-	else if (inc('3O', '4O', '5O')) { drawLine(50, 300, 550, 300) }
-	else if (inc('6O', '7O', '8O')) { drawLine(50, 500, 550, 500) }
-	else if (inc('0O', '3O', '6O')) { drawLine(100, 50, 100, 550) }
-	else if (inc('1O', '4O', '7O')) { drawLine(300, 50, 300, 550) }
-	else if (inc('2O', '5O', '8O')) { drawLine(500, 50, 500, 550) }
-	else if (inc('6O', '4O', '2O')) { drawLine(550, 100, 100, 550) }
-	else if (inc('0O', '4O', '8O')) { drawLine(50, 100, 550, 500) }
+	else if (inc('0O', '1O', '2O')) { drawLine(50, 100, 558, 100) }
+	else if (inc('3O', '4O', '5O')) { drawLine(50, 300, 558, 300) }
+	else if (inc('6O', '7O', '8O')) { drawLine(50, 500, 558, 500) }
+	else if (inc('0O', '3O', '6O')) { drawLine(100, 50, 100, 558) }
+	else if (inc('1O', '4O', '7O')) { drawLine(300, 50, 300, 558) }
+	else if (inc('2O', '5O', '8O')) { drawLine(500, 50, 500, 558) }
+	else if (inc('6O', '4O', '2O')) { drawLine(100, 508, 510, 90) }
+	else if (inc('0O', '4O', '8O')) { drawLine(100, 100, 520, 520) }
 	else { checkForTie() }
 
 	function inc(var1, var2, var3) {
@@ -78,7 +69,7 @@ function WinCheck() {
 
 	function checkForTie() {
 		if (recordSquares.length >= 9) {
-			tieSound(); // play a sound when a tie has been detected
+			sound("tieGame"); // play a sound when a tie has been detected
 			setTimeout(function () { resetGame(); }, 750);
 		}
 	}
@@ -95,22 +86,14 @@ function avatarPlaced() {
 function resetGame() {
 	for (var i = 0; i < 9; i++) {
 		var square = document.getElementById(String(i))
-		square.style.backgroundImage = ''
+		square.style.backgroundImage = ""
 	}
 	recordSquares = []; // this clears the running log of all game moves
 }
 
-function squareSound() {
-	var sound = document.getElementById("placeAvatar");
+function sound(selectSound) {
+	var sound = document.getElementById(selectSound);
 	sound.play();
-}
-function tieSound() {
-	var sound = document.getElementById("tieGame");
-	setTimeout(function () { sound.play(); }, 100);
-}
-function winSound() {
-	var sound = document.getElementById("winGame");
-	setTimeout(function () { sound.play(); }, 100);
 }
 
 function drawLine(coordX1, coordY1, coordX2, coordY2) {
@@ -127,34 +110,32 @@ function drawLine(coordX1, coordY1, coordX2, coordY2) {
 
 	function animate() {
 		var animationLoop = requestAnimationFrame(animate);
-		c.clearRect(0, 0, 600, 600)
+		c.clearRect(0, 0, 608, 608)
 
 		c.beginPath();
 		c.moveTo(x1, y1)
 		c.lineTo(x, y)
 		c.lineWidth = 10;
-		c.strokeStyle = "green";
+		c.strokeStyle = "rgba(70, 255, 33, .8)";
 		c.stroke();
 
-		if (x < x2) {
-			x = x + 20;
+		if (x1 <= x2 && y1 >= y2) {
+			if (x < x2) { x += 10; }
+			if (y > y2) { y -= 10; }
+			if (x >= x2 && y <= y2) { cancelAnimationFrame(animationLoop); }
 		}
-		if (y < y2) {
-			y = y + 20;
-		}
-		if (x >= x2 && y >= y2) {
-			cancelAnimationFrame(animationLoop);
+		if (x1 <= x2 && y1 <= y2) {
+			if (x < x2) { x += 10; }
+			if (y < y2) { y += 10; }
+			if (x >= x2 && y >= y2) { cancelAnimationFrame(animationLoop); }
 		}
 	}
-
-
 	function clear() {
 		var animationLoop = requestAnimationFrame(clear);
-		c.clearRect(0, 0, 600, 600);
+		c.clearRect(0, 0, 608, 608);
 		cancelAnimationFrame(animationLoop);
 	}
-
-	winSound();
+	sound("winGame");
 	animate();
-	setTimeout(function () { clear(); resetGame();}, 1200);
+	setTimeout(function () { clear(); resetGame(); }, 1500);
 }
