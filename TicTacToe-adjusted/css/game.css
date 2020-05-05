@@ -2,7 +2,7 @@ body {
     margin-top: 50px;
 }
 
-#shell {
+.center-container {
     width: 608px;
     margin: 0 auto;
 }
@@ -35,12 +35,12 @@ td {
     padding: 0px;
 }
 
-.photo-container {
+.img-container {
     text-align: center;
     filter: contrast(3)
 }
 
-.avatar {
+.x-or-o {
     width: 200px;
     height: 200px;
 }
