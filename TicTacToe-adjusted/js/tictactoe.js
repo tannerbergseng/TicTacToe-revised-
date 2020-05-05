@@ -60,17 +60,13 @@ function WinCheck() {
 		var x = recordSquares.includes(var1)
 		var y = recordSquares.includes(var2)
 		var z = recordSquares.includes(var3)
-		if (x == true && y == true && z == true) {
-			return true
-		} else {
-			return false
-		}
+		if (x == true && y == true && z == true) { return true }
 	}
 
 	function checkForTie() {
 		if (recordSquares.length >= 9) {
 			sound("tieGame"); // play a sound when a tie has been detected
-			setTimeout(function () { resetGame(); }, 750);
+			setTimeout(function () { resetGame(); }, 300);
 		}
 	}
 }
