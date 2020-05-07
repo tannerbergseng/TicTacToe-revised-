@@ -1,3 +1,4 @@
+// *Adjusting setTimeout function times might result in bugs.
 let activePlayer = 'X'; //This variable keeps track of who's turn it is.
 let selectedSquares = []; //This array stores an array of moves. We use this to determine win conditions.
 
